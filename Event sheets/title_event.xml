@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>title_event</name>
+    <events>
+        <event-block sid="567430484765060">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="971878083480706" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Play" sid="331022400299145" type="Audio">
+                    <param id="0" name="Audio file">fall-to-light-laszlo</param>
+                    <param id="2" name="Loop">1</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="635262276764865">
+            <conditions>
+                <condition id="-3" name="On end of layout" sid="746676175578688" type="System" />
+            </conditions>
+            <actions>
+                <action id="33" name="Stop all" sid="517884116764406" type="Audio" />
+            </actions>
+        </event-block>
+        <event-block sid="813600180954996">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="512836985789046" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">start_text</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="480886911074514" type="System">
+                    <param id="0" name="Layout">level1_layout</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
