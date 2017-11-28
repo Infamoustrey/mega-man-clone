@@ -22,6 +22,8 @@
         <plugin author="Scirra" id="gamepad" version="1">Gamepad</plugin>
     </used-plugins>
     <used-behaviors>
+        <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
+        <behavior author="Scirra" id="LOS" version="1">Line Of Sight</behavior>
         <behavior author="Scirra" id="Platform" version="1">Platform</behavior>
         <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
         <behavior author="Scirra" id="scrollto" version="1">Scroll To</behavior>
@@ -101,6 +103,9 @@
             <plugin id="Sprite" />
             <instance-variables>
                 <instance-variable name="health" sid="207673864517091" type="number" />
+                <instance-variable name="timesFlashed" sid="421154750154519" type="number" />
+                <instance-variable name="isFlashing" sid="223442005540389" type="number" />
+                <instance-variable name="shooting" sid="572075177927500" type="number" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="Platform" sid="315095758272252">
@@ -132,7 +137,7 @@
                     <frame duration="1" hotspotX="0.583333" hotspotY="0.47619" />
                     <frame duration="1" hotspotX="0.583333" hotspotY="0.47619" />
                 </animation>
-                <animation framecount="11" loop="1" name="running" pingpong="0" repeatcount="1" repeatto="0" sid="578932772618691" speed="12">
+                <animation framecount="11" loop="1" name="running" pingpong="0" repeatcount="1" repeatto="0" sid="578932772618691" speed="20">
                     <frame duration="1" hotspotX="0.566667" hotspotY="0.461538" />
                     <frame duration="1" hotspotX="0.617647" hotspotY="0.475" />
                     <frame duration="1" hotspotX="0.608696" hotspotY="0.421053" />
@@ -153,6 +158,11 @@
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.34" />
                     <frame duration="1" hotspotX="0.5" hotspotY="0.404762" />
                     <frame duration="1" hotspotX="0.533333" hotspotY="0.435897" />
+                </animation>
+                <animation framecount="1" loop="0" name="shooting" pingpong="0" repeatcount="1" repeatto="0" sid="571854722922094" speed="5">
+                    <frame duration="1" hotspotX="0.475" hotspotY="0.425">
+                        <image-point name="Barrel" x="0.925" y="0.425" />
+                    </frame>
                 </animation>
             </animation-folder>
         </object-type>
@@ -233,15 +243,93 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="enemy_sprite" sid="365807644689622">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="lives" sid="986533351458367" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Solid" sid="743819157093611">
+                    <behavior id="solid" />
+                </behavior-type>
+                <behavior-type name="Platform" sid="398981352201041">
+                    <behavior id="Platform" />
+                </behavior-type>
+                <behavior-type name="LineOfSight" sid="101109296695009">
+                    <behavior id="LOS" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="4" loop="1" name="idle" pingpong="0" repeatcount="1" repeatto="0" sid="811509402522591" speed="3">
+                    <frame duration="1" hotspotX="0.464286" hotspotY="0.535714" original-source="C:\Users\treyb\Desktop\Mega Man Assets\warped-files\PNG\spritesheets\enemies\crab-idle.png" />
+                    <frame duration="1" hotspotX="0.481481" hotspotY="0.576923" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.6" />
+                    <frame duration="1" hotspotX="0.481481" hotspotY="0.576923" />
+                </animation>
+                <animation framecount="4" loop="0" name="running" pingpong="0" repeatcount="1" repeatto="0" sid="565345484514176" speed="6">
+                    <frame duration="1" hotspotX="0.518519" hotspotY="0.551724" original-source="C:\Users\treyb\Desktop\Mega Man Assets\warped-files\PNG\spritesheets\enemies\crab-walk.png" />
+                    <frame duration="1" hotspotX="0.461538" hotspotY="0.533333" />
+                    <frame duration="1" hotspotX="0.48" hotspotY="0.551724" />
+                    <frame duration="1" hotspotX="0.56" hotspotY="0.516129" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="gate_sprite" sid="659529636092517">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="664567126647649" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\treyb\Desktop\Mega Man Assets\warped-files\PNG\environment\props\gate-01.png">
+                        <collision-poly>
+                            <point x="0.812" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="1" />
+                            <point x="0.81" y="1" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="bullet_sprite" sid="264168871204456">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="direction" sid="651884095629715" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Bullet" sid="951927075521258">
+                    <behavior id="Bullet" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="640912517621111" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\treyb\Desktop\Mega Man Assets\warped-files\PNG\sprites\Fx\shot\shot-1.png">
+                        <collision-poly>
+                            <point x="0.166667" y="0.25" />
+                            <point x="0.5" y="0" />
+                            <point x="0.833333" y="0.25" />
+                            <point x="1" y="0.5" />
+                            <point x="0.833333" y="0.75" />
+                            <point x="0.5" y="1" />
+                            <point x="0.166667" y="0.75" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families />
     <layout-folder>
         <layout>title_layout.xml</layout>
         <layout>level1_layout.xml</layout>
+        <layout>boss_layout.xml</layout>
     </layout-folder>
     <event-folder>
         <event-sheet>title_event.xml</event-sheet>
         <event-sheet>level1_event.xml</event-sheet>
+        <event-sheet>player_event.xml</event-sheet>
+        <event-sheet>enemy_event.xml</event-sheet>
+        <event-sheet>boss_event.xml</event-sheet>
+        <event-sheet>bullet_event.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="WebStorage" uid="1" />
@@ -276,7 +364,7 @@
     <sounds-folder />
     <music-folder>
         <file name="fall-to-light-laszlo.ogg" />
-        <file name="tobu-lightness.ogg" />
+        <file name="tobu_lightness.ogg" />
     </music-folder>
     <files-folder>
         <file-folder name="Icons">

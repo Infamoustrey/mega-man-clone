@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>player_event</name>
+    <events>
+        <event-block sid="632111707909512">
+            <conditions>
+                <condition id="2" inverted="1" name="Key is down" sid="811872173410526" type="Keyboard">
+                    <param id="0" name="Key">38 (Up arrow)</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block any="1" sid="857563116885624">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="846101701985935" type="Keyboard">
+                            <param id="0" name="Key">37 (Left arrow)</param>
+                        </condition>
+                        <condition id="2" name="Key is down" sid="815927070309929" type="Keyboard">
+                            <param id="0" name="Key">39 (Right arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="646065035699257" type="player_sprite">
+                            <param id="0" name="Animation">&quot;running&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="181720254345878">
+            <conditions>
+                <condition id="2" inverted="1" name="Key is down" sid="838561851864373" type="Keyboard">
+                    <param id="0" name="Key">37 (Left arrow)</param>
+                </condition>
+                <condition id="2" inverted="1" name="Key is down" sid="530971122919321" type="Keyboard">
+                    <param id="0" name="Key">39 (Right arrow)</param>
+                </condition>
+                <condition id="2" inverted="1" name="Key is down" sid="282152288328598" type="Keyboard">
+                    <param id="0" name="Key">38 (Up arrow)</param>
+                </condition>
+                <condition id="2" inverted="1" name="Key is down" sid="979644985698527" type="Keyboard">
+                    <param id="0" name="Key">32 (Space)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="677980205686193" type="player_sprite">
+                    <param id="0" name="Animation">&quot;idle&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="805053802338063">
+            <conditions>
+                <condition id="2" name="Key is down" sid="159762886725756" type="Keyboard">
+                    <param id="0" name="Key">37 (Left arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Set mirrored" sid="440546643631270" type="player_sprite">
+                    <param id="0" name="State">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="165744461007830">
+            <conditions>
+                <condition id="2" name="Key is down" sid="282169938938224" type="Keyboard">
+                    <param id="0" name="Key">39 (Right arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Set mirrored" sid="647686123409357" type="player_sprite">
+                    <param id="0" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="476604321379518">
+            <conditions>
+                <condition id="2" name="Key is down" sid="804499572316287" type="Keyboard">
+                    <param id="0" name="Key">38 (Up arrow)</param>
+                </condition>
+                <condition behavior="Platform" id="2" inverted="1" name="Is on floor" sid="536212224974959" type="player_sprite" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="168960137119500" type="player_sprite">
+                    <param id="0" name="Animation">&quot;jump&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="841293634195066">
+            <conditions>
+                <condition id="2" name="Key is down" sid="210426731688342" type="Keyboard">
+                    <param id="0" name="Key">38 (Up arrow)</param>
+                </condition>
+                <condition behavior="Platform" id="2" name="Is on floor" sid="232887315838787" type="player_sprite" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="958180739651691" type="player_sprite">
+                    <param id="0" name="Animation">&quot;idle&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="180328413166140">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="703706043026182" type="player_sprite">
+                    <param id="0" name="Object">stalagtite_sprite</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" sid="141791200911753" type="player_sprite">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Value">10</param>
+                </action>
+                <action behavior="ScrollTo" id="0" name="Shake" sid="509552329786131" type="player_sprite">
+                    <param id="0" name="Magnitude">5</param>
+                    <param id="1" name="Duration">0.4</param>
+                    <param id="2" name="Mode">0</param>
+                </action>
+                <action behavior="Platform" id="8" name="Set vector X" sid="606934162605816" type="player_sprite">
+                    <param id="0" name="Vector X">-player_sprite.Platform.VectorX</param>
+                </action>
+                <action behavior="Platform" id="9" name="Set vector Y" sid="535107839917087" type="player_sprite">
+                    <param id="0" name="Vector Y">-player_sprite.Platform.VectorY</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="735419509764708">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="476542882065761" type="player_sprite">
+                            <param id="0" name="Instance variable">isFlashing</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="241612846576001" type="player_sprite">
+                            <param id="0" name="Instance variable">isFlashing</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="862873697730143" type="player_sprite">
+                            <param id="0" name="Instance variable">timesFlashed</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="803104045512768">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="790319238350038" type="player_sprite">
+                    <param id="0" name="Object">enemy_sprite</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" sid="519017167880304" type="player_sprite">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Value">10</param>
+                </action>
+                <action behavior="ScrollTo" id="0" name="Shake" sid="862827721823625" type="player_sprite">
+                    <param id="0" name="Magnitude">5</param>
+                    <param id="1" name="Duration">0.4</param>
+                    <param id="2" name="Mode">0</param>
+                </action>
+                <action behavior="Platform" id="8" name="Set vector X" sid="122633735372897" type="player_sprite">
+                    <param id="0" name="Vector X">-player_sprite.Platform.VectorX</param>
+                </action>
+                <action behavior="Platform" id="9" name="Set vector Y" sid="648833660189952" type="player_sprite">
+                    <param id="0" name="Vector Y">-player_sprite.Platform.VectorY</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="496259641927060">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="802140274899961" type="player_sprite">
+                            <param id="0" name="Instance variable">isFlashing</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="985654642216003" type="player_sprite">
+                            <param id="0" name="Instance variable">isFlashing</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="491191231537067" type="player_sprite">
+                            <param id="0" name="Instance variable">timesFlashed</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="959249777881226">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="501390484152171" type="System" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="621220927179317">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="427082981379728" type="player_sprite">
+                            <param id="0" name="Instance variable">isFlashing</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="477450553382757" type="player_sprite">
+                            <param id="0" name="Instance variable">timesFlashed</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">3</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="203938761654354" type="player_sprite">
+                            <param id="0" name="Opacity">0</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="523291878390863" type="System">
+                            <param id="0" name="Seconds">0.5</param>
+                        </action>
+                        <action id="-11" name="Add to" sid="828535210345122" type="player_sprite">
+                            <param id="0" name="Instance variable">timesFlashed</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-16" name="Set opacity" sid="555614943953751" type="player_sprite">
+                            <param id="0" name="Opacity">100</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="877729304664777" type="System">
+                            <param id="0" name="Seconds">0.5</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="897650146121611">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="754095212041756" type="player_sprite">
+                            <param id="0" name="Instance variable">isFlashing</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="404950119831718" type="player_sprite">
+                            <param id="0" name="Instance variable">timesFlashed</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">3</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="475947651359628" type="player_sprite">
+                            <param id="0" name="Instance variable">isFlashing</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="732581555118510">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="950422260745405" type="player_sprite">
+                            <param id="0" name="Instance variable">shooting</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="660776402155493" type="player_sprite">
+                            <param id="0" name="Animation">&quot;shooting&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="511778228767432">
+                            <conditions>
+                                <condition id="-6" name="Every X seconds" sid="392955097255657" type="System">
+                                    <param id="0" name="Interval (seconds)">0.25</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="172932086854491" type="System">
+                                    <param id="0" name="Object to create">bullet_sprite</param>
+                                    <param id="1" name="Layer">2</param>
+                                    <param id="2" name="X">player_sprite.ImagePointX(1)</param>
+                                    <param id="3" name="Y">player_sprite.ImagePointY(1)</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="552926911954423">
+                                    <conditions>
+                                        <condition id="7" name="Is mirrored" sid="980263584226490" type="player_sprite" />
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Bullet" id="0" name="Set speed" sid="798321733189709" type="bullet_sprite">
+                                            <param id="0" name="Speed">-bullet_sprite.Bullet.Speed</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="555169194434721">
+            <conditions>
+                <condition id="2" name="Key is down" sid="285688319688395" type="Keyboard">
+                    <param id="0" name="Key">32 (Space)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Set value" sid="985579710196544" type="player_sprite">
+                    <param id="0" name="Instance variable">shooting</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="290379796092907">
+            <conditions>
+                <condition id="2" inverted="1" name="Key is down" sid="143657112350446" type="Keyboard">
+                    <param id="0" name="Key">32 (Space)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Set value" sid="349261228758273" type="player_sprite">
+                    <param id="0" name="Instance variable">shooting</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

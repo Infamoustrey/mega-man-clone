@@ -3,156 +3,50 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>level1_event</name>
     <events>
-        <event-block sid="481624670965276">
+        <include>bullet_event</include>
+        <include>enemy_event</include>
+        <include>player_event</include>
+        <event-block sid="358805398124149">
             <conditions>
-                <condition id="2" inverted="1" name="Key is down" sid="938737275189535" type="Keyboard">
-                    <param id="0" name="Key">38 (Up arrow)</param>
-                </condition>
-            </conditions>
-            <actions />
-            <sub-events>
-                <event-block any="1" sid="667625029760248">
-                    <conditions>
-                        <condition id="2" name="Key is down" sid="162875176468195" type="Keyboard">
-                            <param id="0" name="Key">37 (Left arrow)</param>
-                        </condition>
-                        <condition id="2" name="Key is down" sid="985026498973883" type="Keyboard">
-                            <param id="0" name="Key">39 (Right arrow)</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="4" name="Set animation" sid="555942706060542" type="player_sprite">
-                            <param id="0" name="Animation">&quot;running&quot;</param>
-                            <param id="1" name="From">1</param>
-                        </action>
-                    </actions>
-                </event-block>
-            </sub-events>
-        </event-block>
-        <event-block sid="336669123475088">
-            <conditions>
-                <condition id="2" inverted="1" name="Key is down" sid="734222074688115" type="Keyboard">
-                    <param id="0" name="Key">37 (Left arrow)</param>
-                </condition>
-                <condition id="2" inverted="1" name="Key is down" sid="578755297147856" type="Keyboard">
-                    <param id="0" name="Key">39 (Right arrow)</param>
-                </condition>
-                <condition id="2" inverted="1" name="Key is down" sid="677179890221687" type="Keyboard">
-                    <param id="0" name="Key">38 (Up arrow)</param>
-                </condition>
+                <condition id="-1" name="Every tick" sid="567490696351005" type="System" />
             </conditions>
             <actions>
-                <action id="4" name="Set animation" sid="931059013622095" type="player_sprite">
-                    <param id="0" name="Animation">&quot;idle&quot;</param>
-                    <param id="1" name="From">1</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block sid="413695432116758">
-            <conditions>
-                <condition id="2" name="Key is down" sid="921918131115459" type="Keyboard">
-                    <param id="0" name="Key">37 (Left arrow)</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="7" name="Set mirrored" sid="914374558077229" type="player_sprite">
-                    <param id="0" name="State">0</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block sid="375289858363153">
-            <conditions>
-                <condition id="2" name="Key is down" sid="390221616117357" type="Keyboard">
-                    <param id="0" name="Key">39 (Right arrow)</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="7" name="Set mirrored" sid="195575609353521" type="player_sprite">
-                    <param id="0" name="State">1</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block sid="371091467314771">
-            <conditions>
-                <condition id="2" name="Key is down" sid="700228487667656" type="Keyboard">
-                    <param id="0" name="Key">38 (Up arrow)</param>
-                </condition>
-                <condition behavior="Platform" id="2" inverted="1" name="Is on floor" sid="209545494057051" type="player_sprite" />
-            </conditions>
-            <actions>
-                <action id="4" name="Set animation" sid="809364860218534" type="player_sprite">
-                    <param id="0" name="Animation">&quot;jump&quot;</param>
-                    <param id="1" name="From">1</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block sid="325111875020122">
-            <conditions>
-                <condition id="2" name="Key is down" sid="571621404890934" type="Keyboard">
-                    <param id="0" name="Key">38 (Up arrow)</param>
-                </condition>
-                <condition behavior="Platform" id="2" name="Is on floor" sid="247166965780754" type="player_sprite" />
-            </conditions>
-            <actions>
-                <action id="4" name="Set animation" sid="968349945511792" type="player_sprite">
-                    <param id="0" name="Animation">&quot;idle&quot;</param>
-                    <param id="1" name="From">1</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block sid="108481598348645">
-            <conditions>
-                <condition id="0" name="On collision with another object" sid="475409734226386" type="player_sprite">
-                    <param id="0" name="Object">stalagtite_sprite</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-12" name="Subtract from" sid="528795387259983" type="player_sprite">
-                    <param id="0" name="Instance variable">health</param>
-                    <param id="1" name="Value">10</param>
-                </action>
-                <action behavior="ScrollTo" id="0" name="Shake" sid="362616828504395" type="player_sprite">
-                    <param id="0" name="Magnitude">5</param>
-                    <param id="1" name="Duration">0.4</param>
-                    <param id="2" name="Mode">0</param>
-                </action>
-                <action behavior="Platform" id="8" name="Set vector X" sid="903605834457577" type="player_sprite">
-                    <param id="0" name="Vector X">-player_sprite.Platform.VectorX</param>
-                </action>
-                <action behavior="Platform" id="9" name="Set vector Y" sid="150716388322892" type="player_sprite">
-                    <param id="0" name="Vector Y">-player_sprite.Platform.VectorY</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block sid="671736962210330">
-            <conditions>
-                <condition id="-1" name="Every tick" sid="804788757873084" type="System" />
-            </conditions>
-            <actions>
-                <action id="-5" name="Set width" sid="559649934250710" type="health_bar_sprite">
+                <action id="-5" name="Set width" sid="197022956603891" type="health_bar_sprite">
                     <param id="0" name="Width">player_sprite.health</param>
                 </action>
             </actions>
         </event-block>
-        <event-block sid="188638622360364">
+        <event-block sid="740663661040141">
             <conditions>
-                <condition id="-2" name="On start of layout" sid="497556618720636" type="System" />
+                <condition id="-2" name="On start of layout" sid="216412761203569" type="System" />
             </conditions>
             <actions>
-                <action id="0" name="Play" sid="637974281496104" type="Audio">
-                    <param id="0" name="Audio file">tobu-lightness</param>
+                <action id="0" name="Play" sid="424780604418575" type="Audio">
+                    <param id="0" name="Audio file">tobu_lightness</param>
                     <param id="2" name="Loop">1</param>
-                    <param id="3" name="Volume">0</param>
+                    <param id="3" name="Volume">-20</param>
                     <param id="1" name="Tag (optional)">&quot;&quot;</param>
                 </action>
             </actions>
         </event-block>
-        <event-block sid="447088391311093">
+        <event-block sid="478788386388657">
             <conditions>
-                <condition id="-3" name="On end of layout" sid="933034652383343" type="System" />
+                <condition id="-3" name="On end of layout" sid="743180801351807" type="System" />
             </conditions>
             <actions>
-                <action id="33" name="Stop all" sid="641562478755055" type="Audio" />
+                <action id="33" name="Stop all" sid="408374890011609" type="Audio" />
+            </actions>
+        </event-block>
+        <event-block sid="823776796751949">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="523989955865696" type="gate_sprite">
+                    <param id="0" name="Object">player_sprite</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="951058368845129" type="System">
+                    <param id="0" name="Layout">boss_layout</param>
+                </action>
             </actions>
         </event-block>
     </events>

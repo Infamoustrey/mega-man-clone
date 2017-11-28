@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>enemy_event</name>
+    <events>
+        <event-block sid="879869184684702">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="414704501447239" type="System" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="411231076961611">
+                    <conditions>
+                        <condition behavior="LineOfSight" id="0" name="Has LOS to object" sid="533728610601204" type="enemy_sprite">
+                            <param id="0" name="Object">player_sprite</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="443196244944577">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="296522112077929" type="System">
+                                    <param id="0" name="First value">player_sprite.X</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">enemy_sprite.X</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="833671281522963" type="enemy_sprite">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="336307134980254" type="enemy_sprite">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="309998686080390">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="595904871951791" type="System">
+                                    <param id="0" name="First value">player_sprite.X</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">enemy_sprite.X</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="114522723592860" type="enemy_sprite">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="693051232146760" type="enemy_sprite">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="709539005862299">
+                    <conditions>
+                        <condition behavior="Platform" id="0" name="Is moving" sid="591648661117150" type="enemy_sprite" />
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="735390128999047" type="enemy_sprite">
+                            <param id="0" name="Animation">&quot;running&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="190527322583795">
+                    <conditions>
+                        <condition behavior="Platform" id="0" inverted="1" name="Is moving" sid="395782115257021" type="enemy_sprite" />
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="747389817700281" type="enemy_sprite">
+                            <param id="0" name="Animation">&quot;idle&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="838376644338120">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="127191370455422" type="enemy_sprite">
+                            <param id="0" name="Instance variable">lives</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="669855394711588" type="enemy_sprite" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>
